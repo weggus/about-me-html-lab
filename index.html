@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Me - Craig Candland</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Inline styles for tabs */
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #ded7c5; /* Earth tone */
+            border: 1px solid #a67c52;
+            border-radius: 5px;
+            margin: 0 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #a67c52;
+            color: white;
+        }
+
+        .tab.active {
+            background-color: #a67c52;
+            color: white;
+        }
+
+        .content {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background-color: #f4f1ea;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hello, my name is Craig Candland</h1>
+        <p>I am 19 years old and currently studying Cybersecurity at BYU.</p>
+        <p id="greeting"></p>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tab-container">
+        <div class="tab active" onclick="showTab('education')">Education</div>
+        <div class="tab" onclick="showTab('hobbies')">Hobbies</div>
+        <div class="tab" onclick="showTab('experience')">Experience</div>
+    </div>
+
+    <!-- Tab Content -->
+    <section id="education" class="content active">
+        <h2>Education</h2>
+        <p><strong>High School:</strong> Briar Woods High School, 2019-2023.</p>
+        <p><strong>College:</strong> Currently studying Cybersecurity at Brigham Young University (2023-current, expected graduation 2028).</p>
+        <p>I’m learning about topics like network security, ethical hacking, and risk management as part of my studies.</p>
+    </section>
+
+    <section id="hobbies" class="content">
+        <h2>Hobbies</h2>
+        <p>I love to <em>play video games</em>, <em>hang out with friends</em>, and <em>cook</em>.</p>
+        <p>Here are some of my favorites:</p>
+        <ul>
+            <li><strong>Video Games:</strong> Pokemon Black 2, Apex Legends, and Minecraft.</li>
+            <li><strong>Cooking:</strong> Pasta dishes are my favorite, especially Tuscan Chicken Pasta.</li>
+        </ul>
+    </section>
+
+    <section id="experience" class="content">
+        <h2>Experience</h2>
+        <p>Currently enrolled in two cybersecurity classes at BYU, focusing on technical and practical skills in the field.</p>
+        <p>Completed a summer internship at <strong>Ciena</strong>, where I gained hands-on experience in cybersecurity operations and network management (March 2024 - August 2024).</p>
+    </section>
+
+    <footer>
+        <p>Feel free to connect with me if you share similar interests!</p>
+        <p>© 2024 Craig Candland</p>
+    </footer>
+
+    <script>
+        // Dynamic Greeting Based on Time of Day
+        const hours = new Date().getHours();
+        const timeOfDay = hours < 12 ? 'morning' : hours < 18 ? 'afternoon' : 'evening';
+        document.getElementById('greeting').textContent = `Good ${timeOfDay}, User! Welcome to my About Me page!`;
+
+        // Tab Functionality
+        function showTab(tabId) {
+            // Hide all contents
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active state from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show the selected content and activate the tab
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
